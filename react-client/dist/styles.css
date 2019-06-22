@@ -1,0 +1,45 @@
+body {
+  /* display: fixed;
+  background-color: black;
+  border-color: black;
+  width: 400px;
+  top: 300px; */
+  background: radial-gradient(#80171c, #230e3a);
+  /* width: 100%;
+  margin: 0;
+  padding: 0; */
+  font-family: 'Roboto', sans-serif;
+}
+button {
+  background-color: rgba(38, 21, 48, 0.733);
+  color: brown;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.fretboard-container {
+  position: relative;
+  display: inline-block;
+  height: 225px;
+  width: 900px;
+}
+.note-grid {
+  background-image: url("./fretboard.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 43px 60px 67px 63px 61px 58px 54px 53px 52px 50px 50px 47px 46px 45px 43px 42px 41px 40px;
+  grid-template-rows: repeat(7, 1fr);
+  height: 168px;
+}
+.note {
+  display: fixed;
+  color: rgb(76, 20, 109);
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+  top: 200px;
+  z-index: 6;
+  font-weight: bold;
+  font-size: 20px;
+}
