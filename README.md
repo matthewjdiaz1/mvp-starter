@@ -22,14 +22,10 @@ npm start
 
 TODO
   - input major keys into mongo
-    - Major Modes
-    - Melodic Minor Modes
-    - Harmonic Minor Modes
-    - Harmonic Major Modes
   - display current key, and pick which mode you want(scale)
   - create buttons/input boxes for different scales/modes/arpeggios
 
 Stretch Goalz
-  - metranome
+  - metronome
   - pick number of measures at one scale before switching to another
   - show/play chords that go with certain scale
