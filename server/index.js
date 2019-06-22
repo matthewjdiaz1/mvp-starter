@@ -1,17 +1,23 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-var items = require('../database-mongo');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const scales = require('../database-mongo');
+const db = require('../database-mongo/index.js');
+const port = 3001;
 
-var app = express();
+const app = express();
 
-// UNCOMMENT FOR REACT
-app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.get('/items', function (req, res) {
-  items.selectAll(function (err, data) {
+app.use(express.static(path.join(__dirname + '/../react-client/dist')));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(express.static(__dirname + '/../react-client/dist'));
+
+app.get('/api/scales/:chord', function (req, res) {
+  const chord = req.params.chord
+  scales.fetch(chord, function (err, data) {
     if (err) {
+      console.log('server data', data);
       res.sendStatus(500);
     } else {
       res.json(data);

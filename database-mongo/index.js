@@ -1,31 +1,41 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const mongoose = require('mongoose');
+const mongoURI = 'mongodb://localhost:27017/fretboard';
+const db = mongoose.connect(mongoURI, { useNewUrlParser: true });
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
 
-var db = mongoose.connection;
-
-db.on('error', function() {
-  console.log('mongoose connection error');
+MongoClient.connect(mongoURI, {
+  poolSize: 1000
+}, function (err, db) {
+  assert.equal(null, err);
+  console.log("MongoDB connected to server");
+  db.close();
 });
 
-db.once('open', function() {
-  console.log('mongoose connected successfully');
+const scalesSchema = new mongoose.Schema({
+  chordName: String,
+  scales: {
+    major: [Number],
+    blues: [Number],
+    minor: [Number],
+    harmonicMinor: [Number],
+    melodicMinor: [Number],
+    majorPentatonic: [Number],
+    minorPentatonic: [Number],
+    majorArpeggio: [Number],
+    minorArpeggio: [Number]
+  }
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
+const Scales = mongoose.model('Scales', scalesSchema);
 
-var Item = mongoose.model('Item', itemSchema);
+const fetch = (chord, callback) => {
+  Scales.find({ chordName: chord })
+    .then((data) => {
+      callback(null, data);
+    })
+    .catch((err) => console.log(err));
+}
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
-};
-
-module.exports.selectAll = selectAll;
+module.exports.fetch = fetch;
+module.exports.db = db;
