@@ -1,13 +1,5 @@
 body {
-  /* display: fixed;
-  background-color: black;
-  border-color: black;
-  width: 400px;
-  top: 300px; */
   background: radial-gradient(#80171c, #230e3a);
-  /* width: 100%;
-  margin: 0;
-  padding: 0; */
   font-family: 'Roboto', sans-serif;
 }
 button {
@@ -21,7 +13,9 @@ button {
   font-size: 20px;
 }
 strong {
-  color: red;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+
+  color: whitesmoke;
 }
 .fretboard-container {
   position: relative;
@@ -46,4 +40,40 @@ strong {
   z-index: 6;
   font-weight: bold;
   font-size: 20px;
+}
+.piano-container {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.chord-list {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  width: 200px;
+  color: red;
+}
+.piano-grid {
+  background-image: url("./piano-keys-layout.gif");
+  position: relative;
+  height: 168px;
+  width: 477px;
+}
+.piano-grid-top {
+  position: relative;
+  display: grid;
+  top: 80px;
+  left: 25px;
+  grid-template-columns: 31px 61px 32px 31px 62px 31px 62px 31px 31px 31px;
+  grid-template-rows: 27px;
+}
+.piano-grid-bot {
+  position: relative;
+  display: grid;
+  top: 85px;
+  left: 13px;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: 40px;
+  width: 465px;
 }
