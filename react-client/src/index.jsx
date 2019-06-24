@@ -1,13 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Fretboard from './components/fretboard.jsx';
+import Fretboard from './components/Fretboard.jsx';
+import Chords from './components/Chords.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       chord: 'C',
+      chordsInKey: [
+        ['A Major', [2, 6, 9]],
+        ['A Major Seventh', [2, 6, 9, 13]],
+        ['E Minor', [4, 7, 11]],
+        ['E Minor Seventh', [4, 7, 11, 14]],
+        ['F# Minor', [6, 9, 13]],
+        // ['E Minor Seventh', [4, 7, 11, 2]],
+        ['G Major', [7, 11, 14]],
+        // ['F Major Seventh', [5, 9, 0, 4]],
+        ['A Major', [9, 13, 16]],
+        // ['G Dominant Seventh', [7, 11, 2, 4]],
+        ['B Minor', [11, 14, 20]],
+        // ['A Minor Seventh', [9, 0, 4, 7]],
+        ['C# Diminished', [1, 4, 7]],
+        // ['B Minor Seventh Flat Five', [11, 2, 5, 9]],
+      ],
       currentScale: [0, 2, 4, 5, 7, 9, 11],
       major: null,
       blues: null,
@@ -19,7 +36,7 @@ class App extends React.Component {
       majorArpeggio: null,
       minorArpeggio: null
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.switchKey = this.switchKey.bind(this);
     this.fetchChord = this.fetchChord.bind(this);
     this.switchScale = this.switchScale.bind(this);
   }
@@ -32,7 +49,6 @@ class App extends React.Component {
       url: `/api/scales/${chord}`,
       type: 'GET',
       success: (data) => {
-        console.log(data[0].scales);
         this.setState({
           chord: chord,
           scales: data[0].scales,
@@ -54,11 +70,8 @@ class App extends React.Component {
       }
     })
   }
-  handleClick(chord) {
-    console.log(chord);
-    this.setState({
-      chord
-    });
+  switchKey(key) {
+    this.fetchChord(key);
   }
   switchScale(scale, scaleName) {
     this.setState({
@@ -67,18 +80,19 @@ class App extends React.Component {
     })
   }
 
+
   render() {
     return (
       <div>
         <div>
           <strong>Key</strong>
-          <button onClick={() => this.handleClick('C')}>C</button>
-          <button onClick={() => this.handleClick('D')}>D</button>
-          <button onClick={() => this.handleClick('E')}>E</button>
-          <button onClick={() => this.handleClick('F')}>F</button>
-          <button onClick={() => this.handleClick('G')}>G</button>
-          <button onClick={() => this.handleClick('A')}>A</button>
-          <button onClick={() => this.handleClick('B')}>B</button>
+          <button onClick={() => this.switchKey('C')}>C</button>
+          <button onClick={() => this.switchKey('D')}>D</button>
+          <button onClick={() => this.switchKey('E')}>E</button>
+          <button onClick={() => this.switchKey('F')}>F</button>
+          <button onClick={() => this.switchKey('G')}>G</button>
+          <button onClick={() => this.switchKey('A')}>A</button>
+          <button onClick={() => this.switchKey('B')}>B</button>
         </div>
         <div>
           <strong>Scale</strong>
@@ -93,10 +107,13 @@ class App extends React.Component {
           <button onClick={() => this.switchScale(this.state.minorArpeggio, 'Minor Arpeggio')}>Minor Arpeggio</button>
         </div>
         <div>
-          <strong>{this.state.chord} {this.state.currentScaleName}</strong>
+          <strong>Current Scale  -  {this.state.chord} {this.state.currentScaleName}</strong>
         </div>
         <div>
           <Fretboard scale={this.state.currentScale} />
+        </div>
+        <div>
+          <Chords chords={this.state.chordsInKey} currentChord={`${this.state.chord} ${this.state.currentScaleName}`} />
         </div>
       </div>
     )

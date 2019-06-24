@@ -21,11 +21,10 @@ npm start
 ## Features
 
 TODO
-  - input major keys into mongo
-  - display current key, and pick which mode you want(scale)
-  - create buttons/input boxes for different scales/modes/arpeggios
+  - button hover on current key/scale
+  - add what chords go with each scale
 
 Stretch Goalz
-  - metronome
-  - pick number of measures at one scale before switching to another
-  - show/play chords that go with certain scale
+  - show chords that accompany scale
+  - randomly play chords that match scale
+  - play sound of chord from (yet to be found) API
