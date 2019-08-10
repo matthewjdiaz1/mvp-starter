@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const scales = require('../database-mongo');
 const db = require('../database-mongo/index.js');
-const port = 3000;
+const port = 3001;
 
 const app = express();
 

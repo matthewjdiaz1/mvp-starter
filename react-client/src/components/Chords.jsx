@@ -22,12 +22,10 @@ class Chords extends React.Component {
     this.mapChordsTop(currentChord);
     this.mapChordsBot(currentChord);
   }
-  mapChordNames(chord) {
-    return <div onClick={() => this.clickChord(chord)}>{chord[0]}</div>
+  mapChordNames(chord, index) {
+    return <div key={index} onClick={() => this.clickChord(chord)}>{chord[0]}</div>
   }
-  mapChordsTop(chordNumber) {
-    // C# D#     F# G# A#
-    // 1  3      6  8  10
+  mapChordsTop(chordNumber, index) {
     const blackKeys = {
       1: 'C#',
       3: 'D#',
@@ -41,14 +39,12 @@ class Chords extends React.Component {
       22: 'A#'
     }
     if (this.state.currentChord.includes(chordNumber)) {
-      return <div className="note" style={{ color: 'red' }}>{blackKeys[chordNumber]}</div>
+      return <div className="note" key={index} style={{ color: 'red' }}>{blackKeys[chordNumber]}</div>
     } else {
-      return <div></div>
+      return <div key={index}></div>
     }
   }
-  mapChordsBot(chordNumber) {
-    // C D E F G A B
-    // 0 2 4 5 7 9 11
+  mapChordsBot(chordNumber, index) {
     const whiteKeys = {
       0: 'C',
       2: 'D',
@@ -66,9 +62,9 @@ class Chords extends React.Component {
       23: 'B'
     }
     if (this.state.currentChord.includes(chordNumber)) {
-      return <div className="note">{whiteKeys[chordNumber]}</div>
+      return <div className="note" key={index}>{whiteKeys[chordNumber]}</div>
     } else {
-      return <div></div>
+      return <div key={index}></div>
     }
   }
 

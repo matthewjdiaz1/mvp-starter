@@ -107,7 +107,7 @@ class App extends React.Component {
           <button onClick={() => this.switchScale(this.state.minorArpeggio, 'Minor Arpeggio')}>Minor Arpeggio</button>
         </div>
         <div>
-          <strong>Current Scale  -  {this.state.chord} {this.state.currentScaleName}</strong>
+          <strong>{this.state.chord} {this.state.currentScaleName}</strong>
         </div>
         <div>
           <Fretboard scale={this.state.currentScale} />
