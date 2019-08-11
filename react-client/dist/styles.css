@@ -19,7 +19,7 @@ strong {
 .fretboard-container {
   position: relative;
   display: inline-block;
-  background-image: url("./fretboard.png");
+  background-image: url("./assets/fretboard.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 97% 94%;
@@ -63,7 +63,7 @@ strong {
   color: red;
 }
 .piano-grid {
-  background-image: url("./piano-keys-layout.gif");
+  background-image: url("./assets/piano-keys-layout.gif");
   position: relative;
   height: 168px;
   width: 477px;
