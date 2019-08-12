@@ -4,9 +4,7 @@ const path = require('path');
 const scales = require('../database-mongo');
 const db = require('../database-mongo/index.js');
 const port = 3001;
-
 const app = express();
-
 
 app.use(express.static(path.join(__dirname + '/../react-client/dist')));
 app.use(bodyParser.urlencoded({ extended: true }));

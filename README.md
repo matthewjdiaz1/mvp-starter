@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 7 String Practice App
 
 ## Table of Contents
@@ -28,3 +29,8 @@ Stretch Goalz
   - show chords that accompany scale
   - randomly play chords that match scale
   - play sound of chord from (yet to be found) API
+||||||| merged common ancestors
+=======
+# mvp-starter
+This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.
+>>>>>>> 51eefd30c8820687e965d25ad5b73f082f2301b6
