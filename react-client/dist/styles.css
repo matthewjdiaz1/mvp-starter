@@ -1,9 +1,9 @@
 body {
-  /* background: radial-gradient(#80171c, #230e3a); */
+  background: radial-gradient(#80171c, #230e3a);
   font-family: 'Roboto', sans-serif;
 }
 button {
-  background-color: rgba(38, 21, 48, 0.733);
+  background: radial-gradient(#80171c, #230e3a);
   color: red;
   padding: 14px 20px;
   margin: 8px 2px;
@@ -19,6 +19,7 @@ strong {
 .fretboard-container {
   position: relative;
   display: inline-block;
+  background-color: white;
   background-image: url("./assets/fretboard.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -26,20 +27,37 @@ strong {
   height: 194px;
   width: 1200px;
   margin: 10px;
-  /* padding: 10px 0px 0px 0px; */
   border-style: ridge;
+}
+.fret-number-container {
+  display: grid;
+  /*      fret    Open   1    2    3    4    5    6    7    8    9    0    1    2    3    4    5    6    7    8    9    0    1    2    3    4   */
+  grid-template-columns: 51px 64px 60px 60px 58px 57px 55px 56px 53px 52px 50px 49px 49px 46px 44px 44px 41px 43px 38px 40px 37px 36px 35px 34px 33px;
+  flex-direction: row;
+  height: 23px;
+  width: 1200px;
+  margin: 6px 0px 0px 0px;
+  opacity: .30;
+}
+.fret-number {
+  height: 23px;
+  width: 23px;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 18px;
 }
 .note-grid {
   display: grid;
+  /*     fret     Open   1    2    3    4    5    6    7    8    9    0    1    2    3    4    5    6    7    8    9    0    1    2    3    4   */
   grid-template-columns: 47px 63px 62px 60px 59px 58px 55px 54px 53px 52px 50px 50px 49px 45px 45px 43px 42px 41px 40px 39px 37px 36px 36px 35px 33px;
-  /* '999999999'           1   2    3    4    5    6     7    8   9     0    1  2     3    4    5    6    7     8   9    0     1     2    3    4 */
+  /* grid-template-columns: 51px 64px 60px 60px 58px 57px 55px 56px 53px 52px 50px 49px 49px 46px 44px 44px 41px 43px 38px 40px 37px 36px 35px 34px 33px; */
   grid-template-rows: repeat(7, 1fr);
-  /* background-size: cover; */
 }
 .note {
-  /* display: fixed; */
-  /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
-  z-index: 6;
   height: 23px;
   width: 23px;
   text-align: center;

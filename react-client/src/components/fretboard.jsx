@@ -30,6 +30,7 @@ class Fretboard extends React.Component {
       }
     }
     this.filterNotes = this.filterNotes.bind(this);
+    this.highlightFrets = this.highlightFrets.bind(this);
   }
   filterNotes(fret, index) {
     if (this.props.scale.includes(fret)) {
@@ -41,6 +42,17 @@ class Fretboard extends React.Component {
       return <div key={index}></div>
     }
   }
+  highlightFrets(fretNumber, index) {
+    let fretAccent = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
+    if (index <= 24) {
+      if (!fretAccent.includes(index)) {
+        return <div className='fret-number' key={index} style={{ opacity: .25 }}></div>
+      } else {
+        return <div className='fret-number' key={index}></div>
+      }
+    }
+
+  }
 
   render() {
     return (
@@ -48,6 +60,9 @@ class Fretboard extends React.Component {
         <div>{this.props.currentScale}</div>
         <div className="note-grid">
           {this.state.guitarTuning.map(this.filterNotes)}
+        </div>
+        <div className="fret-number-container">
+          {this.state.guitarTuning.map(this.highlightFrets)}
         </div>
       </div>
     )
