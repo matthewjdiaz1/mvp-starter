@@ -34,7 +34,7 @@ class Fretboard extends React.Component {
     this.highlightFrets = this.highlightFrets.bind(this);
   }
   filterNotes(fret, index) {
-    return <RenderNote fret={fret} index={index} scale={this.props.scale} fretToNote={this.state.fretToNote} />
+    return <RenderNote className="note" key={index} fret={fret} index={index} scale={this.props.scale} fretToNote={this.state.fretToNote} />
   }
   highlightFrets(fretNumber, index) {
     let fretAccent = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];

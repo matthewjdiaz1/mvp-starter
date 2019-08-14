@@ -19,11 +19,11 @@ class RenderNote extends React.Component {
   render() {
     if (this.props.scale.includes(this.props.fret)) {
       if (this.props.scale[0] === this.props.fret) {
-        return <div className="note" key={this.props.index} style={{ color: "red", visibility: this.state.visibility }}>{this.props.fretToNote[this.props.fret]}</div>
+        return <div className="note" style={{ color: "red", visibility: this.state.visibility }}>{this.props.fretToNote[this.props.fret]}</div>
       }
-      return <div className="note" key={this.props.index} style={{ visibility: this.state.visibility }}>{this.props.fretToNote[this.props.fret]}</div>
+      return <div className="note" style={{ visibility: this.state.visibility }}>{this.props.fretToNote[this.props.fret]}</div>
     } else {
-      return <div key={this.props.index} style={{ visibility: this.state.visibility }}></div>
+      return <div style={{ visibility: this.state.visibility }}></div>
     }
   }
 }
