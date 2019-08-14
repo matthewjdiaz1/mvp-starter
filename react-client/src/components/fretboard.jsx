@@ -1,4 +1,5 @@
 import React from 'react';
+import RenderNote from './RenderNote.jsx';
 
 class Fretboard extends React.Component {
   constructor(props) {
@@ -33,17 +34,13 @@ class Fretboard extends React.Component {
     this.highlightFrets = this.highlightFrets.bind(this);
   }
   filterNotes(fret, index) {
-    if (this.props.scale.includes(fret)) {
-      if (this.props.scale[0] === fret) {
-        return <div className="note" key={index} style={{ color: 'red' }}>{this.state.fretToNote[fret]}</div>
-      }
-      return <div className="note" key={index}>{this.state.fretToNote[fret]}</div>;
-    } else {
-      return <div key={index}></div>
-    }
+    return <RenderNote fret={fret} index={index} scale={this.props.scale} fretToNote={this.state.fretToNote} />
   }
   highlightFrets(fretNumber, index) {
     let fretAccent = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
+    // if (index === 0) {
+    //   return <div></div>
+    // }
     if (index <= 24) {
       if (!fretAccent.includes(index)) {
         return <div className='fret-number' key={index} style={{ opacity: .25 }}></div>
